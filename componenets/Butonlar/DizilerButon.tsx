@@ -1,15 +1,15 @@
-"use client"; // Bu direktif bileşenin client tarafında çalışmasını sağlar
+"use client";
 
-// components/DizilerButon.tsx
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const DizilerButon: React.FC = () => {
-  // Ses çalma fonksiyonu
+  const router = useRouter(); // Router kullanımı için hook
+
   const playSound = () => {
-    // Ses dosyasını yükle
-    const audio = new Audio("/best-sound.mp3"); // Ses dosyasının yolu public/ altında
-    audio.play(); // Ses dosyasını çal
-    window.open("/diziler", "_blank"); // yeni sekmede aç
+    const audio = new Audio("/best-sound.mp3");
+    audio.play();
+    router.push("/diziler"); // Aynı sekmede /diziler sayfasına yönlendir
   };
 
   return (

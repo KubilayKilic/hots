@@ -1,15 +1,15 @@
-"use client"; // Bu direktif bileşenin client tarafında çalışmasını sağlar
+"use client"; // bileşenin client tarafında çalışmasını için
 
-// components/FilmButon.tsx
 import React from "react";
+import { useRouter } from "next/navigation";
 
-const FilmButon: React.FC = () => {
-  // Ses çalma fonksiyonu
+const FilmlerButon: React.FC = () => {
+  const router = useRouter(); // Router kullanımı için hook
+
   const playSound = () => {
-    // Ses dosyasını yükle
-    const audio = new Audio("/best-sound.mp3"); // Ses dosyasının yolu public/ altında
-    audio.play(); // Ses dosyasını çal
-    window.open("/filmler", "_blank"); // yeni sekmede aç
+    const audio = new Audio("/best-sound.mp3");
+    audio.play();
+    router.push("/filmler");
   };
 
   return (
@@ -24,4 +24,4 @@ const FilmButon: React.FC = () => {
   );
 };
 
-export default FilmButon;
+export default FilmlerButon;

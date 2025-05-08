@@ -1,13 +1,15 @@
-import FilmButon from "@/componenets/Butonlar/FilmButon";
-import KitapButon from "@/componenets/Butonlar/KitapButon";
+import FilmlerButon from "@/componenets/Butonlar/FilmlerButon";
+import KitaplarButon from "@/componenets/Butonlar/KitaplarButon";
 import DizilerButon from "@/componenets/Butonlar/DizilerButon";
+import OyunlarButon from "@/componenets/Butonlar/OyunlarButon";
 
 export default function Home() {
   return (
     <main className="min-h-screen flex items-center justify-center ">
-      <FilmButon />
-      <KitapButon />
+      <FilmlerButon />
       <DizilerButon />
+      <KitaplarButon />
+      <OyunlarButon />
     </main>
   );
 }

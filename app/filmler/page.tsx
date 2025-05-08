@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div className="flex justify-center p-8">
       <Card
-        title="Dizi 1"
+        title="Film başlık"
         description="Bu dizi hakkında kısa açıklama."
         imageUrl="/path-to-image.jpg" // opsiyonel
       />
