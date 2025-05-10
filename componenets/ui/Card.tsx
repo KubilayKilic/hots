@@ -1,5 +1,3 @@
-// her kategoride kullanılacak olan kart bileşeni, dataya göre görsel ve isim ve birkaç bilgi daha barındıracak ve map edilerek kartlar gösterilecek
-
 import React from "react";
 
 interface CardProps {

@@ -1,23 +1,48 @@
 import React from "react";
+import { supabase } from "@/lib/supabase"; // supabse client import ediliyor.
 import Card from "@/componenets/ui/Card";
 
-const page = () => {
+// `Server Component` olarak veri çekiyoruz
+const FilmlerPage = async () => {
+  // Supabase'ten veriyi çekiyoruz
+  const { data, error } = await supabase
+    .from("archive") // 'archive' tablosundan alıyoruz
+    .select("*")
+    .eq("category", "film"); // "category" değeri "film" olanları filtreliyoruz
+  console.log("Supabase'den gelen veri:", data);
+  if (error) {
+    console.error(error);
+    return (
+      <div className="flex justify-center p-8 gap-4">
+        <p>Error fetching films.</p>
+      </div>
+    ); // Hata varsa, kullanıcıya hata mesajı gösteriyoruz
+  }
+
+  const filmler = data.map((item) => ({
+    title: item.title,
+    description: item.description,
+    image_url: item.image_url,
+    resonance: item.resonance,
+  }));
+
   return (
     <div className="flex justify-center p-8 gap-4">
-      <Card
-        title="Kara Şövalye"
-        description="When a menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman, James Gordon and Harvey Dent must work together to put an end to the madness."
-        imageUrl="./cover-images/batman-cover.jpg"
-        resonance={1}
-      />
-      <Card
-        title="Örümcek Adam: Örümcek Evreninde"
-        description="Teen Miles Morales becomes the Spider-Man of his universe and must join with five spider-powered individuals from other dimensions to stop a threat for all realities."
-        imageUrl="./cover-images/spi-cover.jpg"
-        resonance={2}
-      />
+      {filmler.length > 0 ? (
+        filmler.map((film, index) => (
+          <Card
+            key={index}
+            title={film.title}
+            description={film.description}
+            imageUrl={film.image_url}
+            resonance={film.resonance}
+          />
+        ))
+      ) : (
+        <p>No films available</p> // Eğer film yoksa, mesaj göster
+      )}
     </div>
   );
 };
 
-export default page;
+export default FilmlerPage;

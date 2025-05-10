@@ -1,17 +1,48 @@
 import React from "react";
+import { supabase } from "@/lib/supabase"; // supabse client import ediliyor.
 import Card from "@/componenets/ui/Card";
 
-const page = () => {
+// `Server Component` olarak veri çekiyoruz
+const FilmlerPage = async () => {
+  // Supabase'ten veriyi çekiyoruz
+  const { data, error } = await supabase
+    .from("archive") // 'archive' tablosundan alıyoruz
+    .select("*")
+    .eq("category", "oyun"); // "category" değeri "film" olanları filtreliyoruz
+  console.log("Supabase'den gelen veri:", data);
+  if (error) {
+    console.error(error);
+    return (
+      <div className="flex justify-center p-8 gap-4">
+        <p>Error fetching films.</p>
+      </div>
+    ); // Hata varsa, kullanıcıya hata mesajı gösteriyoruz
+  }
+
+  const filmler = data.map((item) => ({
+    title: item.title,
+    description: item.description,
+    image_url: item.image_url,
+    resonance: item.resonance,
+  }));
+
   return (
     <div className="flex justify-center p-8 gap-4">
-      <Card
-        title="Grand Theft Auto V"
-        description="Los Santos is a vast, sun-soaked metropolis full of self-help gurus, starlets and once-important, formerly-known-as celebrities. The city was once the envy of the Western world, but is now struggling to stay afloat in an era of economic uncertainty and reality TV. Amidst the chaos, three unique criminals plot their own chances of survival and success: Franklin, a former street gangster in search of real opportunities and serious cheddar; Michael, a professional ex-con whose retirement is a lot less rosy than he hoped it would be; and Trevor, a violent maniac driven by the chance of a cheap high and the next big score. Quickly running out of options, the crew risks it all in a sequence of daring and dangerous heists that could set them up for life."
-        imageUrl="./cover-images/gta5.jpg"
-        resonance={2}
-      />
+      {filmler.length > 0 ? (
+        filmler.map((film, index) => (
+          <Card
+            key={index}
+            title={film.title}
+            description={film.description}
+            imageUrl={film.image_url}
+            resonance={film.resonance}
+          />
+        ))
+      ) : (
+        <p>No films available</p> // Eğer film yoksa, mesaj göster
+      )}
     </div>
   );
 };
 
-export default page;
+export default FilmlerPage;
