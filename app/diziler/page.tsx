@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase"; // supabse client import ediliyor.
 import Card from "@/componenets/ui/Card";
 
 // `Server Component` olarak veri çekiyoruz
-const FilmlerPage = async () => {
+const getServerData = async () => {
   // Supabase'ten veriyi çekiyoruz
   const { data, error } = await supabase
     .from("archive") // 'archive' tablosundan alıyoruz
@@ -14,12 +14,12 @@ const FilmlerPage = async () => {
     console.error(error);
     return (
       <div className="flex justify-center p-8 gap-4">
-        <p>Error fetching films.</p>
+        <p>Error fetching shows.</p>
       </div>
     ); // Hata varsa, kullanıcıya hata mesajı gösteriyoruz
   }
 
-  const filmler = data.map((item) => ({
+  const shows = data.map((item) => ({
     title: item.title,
     description: item.description,
     image_url: item.image_url,
@@ -28,8 +28,8 @@ const FilmlerPage = async () => {
 
   return (
     <div className="flex justify-center p-8 gap-4">
-      {filmler.length > 0 ? (
-        filmler.map((film, index) => (
+      {shows.length > 0 ? (
+        shows.map((film, index) => (
           <Card
             key={index}
             title={film.title}
@@ -39,10 +39,10 @@ const FilmlerPage = async () => {
           />
         ))
       ) : (
-        <p>No films available</p> // Eğer film yoksa, mesaj göster
+        <p>No shows available</p> // Eğer film yoksa, mesaj göster
       )}
     </div>
   );
 };
 
-export default FilmlerPage;
+export default getServerData;
