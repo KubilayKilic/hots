@@ -1,15 +1,16 @@
 import React from "react";
+import Card from "@/componenets/ui/Card";
 
 const page = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-gradient-to-b from-white to-lime-100 dark:from-gray-900 dark:to-gray-800">
-      <h1 className="text-4xl font-bold mb-4 text-teal-600 dark:text-blue-400">
-        Oyunlar Sayfası
-      </h1>
-      <p className="text-lg text-gray-700 dark:text-gray-300">
-        Burada oyunlarla ilgili içerikler olacak...
-      </p>
-    </main>
+    <div className="flex justify-center p-8 gap-4">
+      <Card
+        title="Grand Theft Auto V"
+        description="Los Santos is a vast, sun-soaked metropolis full of self-help gurus, starlets and once-important, formerly-known-as celebrities. The city was once the envy of the Western world, but is now struggling to stay afloat in an era of economic uncertainty and reality TV. Amidst the chaos, three unique criminals plot their own chances of survival and success: Franklin, a former street gangster in search of real opportunities and serious cheddar; Michael, a professional ex-con whose retirement is a lot less rosy than he hoped it would be; and Trevor, a violent maniac driven by the chance of a cheap high and the next big score. Quickly running out of options, the crew risks it all in a sequence of daring and dangerous heists that could set them up for life."
+        imageUrl="./cover-images/gta5.jpg"
+        resonance={2}
+      />
+    </div>
   );
 };
 

@@ -1,15 +1,16 @@
 import React from "react";
+import Card from "@/componenets/ui/Card";
 
 const page = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-gradient-to-b from-white to-lime-100 dark:from-gray-900 dark:to-gray-800">
-      <h1 className="text-4xl font-bold mb-4 text-teal-600 dark:text-red-400">
-        Kitaplar Sayfası
-      </h1>
-      <p className="text-lg text-gray-700 dark:text-gray-300">
-        Burada kitaplarla ilgili içerikler olacak...
-      </p>
-    </main>
+    <div className="flex justify-center p-8 gap-4">
+      <Card
+        title="Fahrenheit 451"
+        description="Guy Montag bir itfaiyeciydi. Televizyonun hüküm sürdüğü bu dünyada kitaplar ise yok olmak üzereydi zira itfaiyeciler yangın söndürmek yerine ortalığı ateşe veriyordu. Montag’ın işi ise yasadışı olanların en tehlikelisini yakmaktı: Kitapları."
+        imageUrl="./cover-images/f451.jpg"
+        resonance={1}
+      />
+    </div>
   );
 };
 

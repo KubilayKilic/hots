@@ -1,15 +1,16 @@
 import React from "react";
+import Card from "@/componenets/ui/Card";
 
 const page = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-gradient-to-b from-white to-lime-100 dark:from-gray-900 dark:to-gray-800">
-      <h1 className="text-4xl font-bold mb-4 text-teal-600 dark:text-lime-300">
-        Diziler Sayfası
-      </h1>
-      <p className="text-lg text-gray-700 dark:text-gray-300">
-        Burada dizilerle ilgili içerikler olacak...
-      </p>
-    </main>
+    <div className="flex justify-center p-8 gap-4">
+      <Card
+        title="Love, Death & Robots"
+        description="A collection of animated short stories that span various genres including science fiction, fantasy, horror and comedy."
+        imageUrl="./cover-images/ldr-cover.jpg"
+        resonance={1}
+      />
+    </div>
   );
 };
 

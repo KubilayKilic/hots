@@ -24,7 +24,10 @@ const Card: React.FC<CardProps> = ({
       />
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 px-4">
         <h3 className="text-white text-xl font-bold mt-4">{title}</h3>
-        <p className="text-white text-sm mt-2">{description}</p>
+        {/* Scrollable description */}
+        <div className="overflow-y-auto no-scrollbar text-sm text-white mt-2 mb-4 flex-1">
+          <p>{description}</p>
+        </div>
         <div className="text-yellow-400 text-lg flex justify-between mt-auto mb-4">
           {"⭐".repeat(resonance)}
         </div>
