@@ -23,12 +23,22 @@
 }
 
 body {
+  margin: 0;
+  height: auto;
+  min-height: 100vh;
+}
+
+.background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Sadece ilk ekran kadar */
   background-image: url("/arkaplan.jpg");
-  background-size: cover; /* Resmi tam ekran yapar */
-  background-position: center; /* Resmin ortalanmasını sağlar */
-  background-repeat: no-repeat; /* Resmin tekrarlanmamasını sağlar */
-  height: 100vh; /* Sayfanın yüksekliği kadar arka planı yay */
-  margin: 0; /* Sayfa kenarlıklarını sıfırlamak */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
 @layer utilities {

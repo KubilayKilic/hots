@@ -27,21 +27,27 @@ const getServerData = async () => {
   }));
 
   return (
-    <div className="flex justify-center p-8 gap-4">
-      {games.length > 0 ? (
-        games.map((film, index) => (
-          <Card
-            key={index}
-            title={film.title}
-            description={film.description}
-            imageUrl={film.image_url}
-            resonance={film.resonance}
-          />
-        ))
-      ) : (
-        <p>No games available</p> // Eğer film yoksa, mesaj göster
-      )}
-    </div>
+    <>
+      {/* Arka plan sadece ilk ekran kadar sabit kalır */}
+      <div className="background-layer" />
+
+      {/* Scroll edilecek içerik */}
+      <div className="relative z-10 flex justify-center p-8 gap-4 flex-wrap">
+        {games.length > 0 ? (
+          games.map((film, index) => (
+            <Card
+              key={index}
+              title={film.title}
+              description={film.description}
+              imageUrl={film.image_url}
+              resonance={film.resonance}
+            />
+          ))
+        ) : (
+          <p>No games available</p>
+        )}
+      </div>
+    </>
   );
 };
 

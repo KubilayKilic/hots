@@ -30,7 +30,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* Sabit background sadece ilk ekran kadar gözüksün */}
+        <div className="background-layer" />
+
+        {/* Sayfa içeriği */}
+        <main className="relative z-10">{children}</main>
       </body>
     </html>
   );

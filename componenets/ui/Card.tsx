@@ -4,7 +4,7 @@ interface CardProps {
   title: string;
   description: string;
   imageUrl?: string;
-  resonance: number; // 1, 2 veya 3 yıldız skoruna göre emoji eklenecek
+  resonance: number; // 1, 2 veya 3 yıldız skoruna göre emoji eklenecek veya nadir 4?
 }
 
 const Card: React.FC<CardProps> = ({
