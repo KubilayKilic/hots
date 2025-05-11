@@ -9,7 +9,7 @@ const FilmlerButon: React.FC = () => {
   const playSound = () => {
     const audio = new Audio("/best-sound.mp3");
     audio.play();
-    router.push("/filmler");
+    router.push("/filmler"); // Aynı sekmede /filmler sayfasına yönlendir
   };
 
   return (

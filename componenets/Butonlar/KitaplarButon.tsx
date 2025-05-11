@@ -1,4 +1,4 @@
-"use client";
+"use client"; // bileşenin client tarafında çalışmasını için
 
 import React from "react";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,7 @@ const KitaplarButon: React.FC = () => {
   const playSound = () => {
     const audio = new Audio("/best-sound.mp3");
     audio.play();
-    router.push("/kitaplar");
+    router.push("/kitaplar"); // Aynı sekmede /kitaplar sayfasına yönlendir
   };
 
   return (

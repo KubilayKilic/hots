@@ -1,4 +1,4 @@
-"use client";
+"use client"; // bileşenin client tarafında çalışmasını için
 
 import React from "react";
 import { useRouter } from "next/navigation";

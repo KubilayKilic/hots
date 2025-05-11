@@ -2,11 +2,10 @@ import React from "react";
 import { supabase } from "@/lib/supabase"; // supabse client import ediliyor.
 import Card from "@/componenets/ui/Card";
 
-// `Server Component` olarak veri çekiyoruz
+// serverden veri alma fonksiyonu
 const getServerData = async () => {
-  // Supabase'ten veriyi çekiyoruz
   const { data, error } = await supabase
-    .from("archive") // 'archive' tablosundan alıyoruz
+    .from("archive") // 'archive' tablosundan
     .select("*")
     .eq("category", "film"); // "category" değeri "film" olanları filtreliyoruz
   console.log("Supabase'den gelen veri:", data);
@@ -16,10 +15,15 @@ const getServerData = async () => {
       <div className="flex justify-center p-8 gap-4">
         <p>Error fetching movies.</p>
       </div>
-    ); // Hata varsa, kullanıcıya hata mesajı gösteriyoruz
+    );
   }
 
-  const movies = data.map((item) => ({
+  // ⭐ Alfabetik olarak sırala (title'a göre)
+  const sortedData = data.sort((a, b) =>
+    a.title.localeCompare(b.title, "tr", { sensitivity: "base" })
+  );
+
+  const movies = sortedData.map((item) => ({
     title: item.title,
     description: item.description,
     image_url: item.image_url,

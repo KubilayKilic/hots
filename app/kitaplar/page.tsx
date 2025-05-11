@@ -2,13 +2,12 @@ import React from "react";
 import { supabase } from "@/lib/supabase"; // supabse client import ediliyor.
 import Card from "@/componenets/ui/Card";
 
-// `Server Component` olarak veri çekiyoruz
+// serverden veri alma fonksiyonu
 const getServerData = async () => {
-  // Supabase'ten veriyi çekiyoruz
   const { data, error } = await supabase
-    .from("archive") // 'archive' tablosundan alıyoruz
+    .from("archive") // 'archive' tablosundan
     .select("*")
-    .eq("category", "kitap"); // "category" değeri "film" olanları filtreliyoruz
+    .eq("category", "kitap"); // "category" değeri "kitap" olanları filtreliyoruz
   console.log("Supabase'den gelen veri:", data);
   if (error) {
     console.error(error);
@@ -16,10 +15,15 @@ const getServerData = async () => {
       <div className="flex justify-center p-8 gap-4">
         <p>Error fetching books.</p>
       </div>
-    ); // Hata varsa, kullanıcıya hata mesajı gösteriyoruz
+    );
   }
 
-  const books = data.map((item) => ({
+  // ⭐ Alfabetik olarak sırala (title'a göre)
+  const sortedData = data.sort((a, b) =>
+    a.title.localeCompare(b.title, "tr", { sensitivity: "base" })
+  );
+
+  const books = sortedData.map((item) => ({
     title: item.title,
     description: item.description,
     image_url: item.image_url,
@@ -29,17 +33,17 @@ const getServerData = async () => {
   return (
     <div className="flex justify-center p-8 gap-4">
       {books.length > 0 ? (
-        books.map((film, index) => (
+        books.map((kitap, index) => (
           <Card
             key={index}
-            title={film.title}
-            description={film.description}
-            imageUrl={film.image_url}
-            resonance={film.resonance}
+            title={kitap.title}
+            description={kitap.description}
+            imageUrl={kitap.image_url}
+            resonance={kitap.resonance}
           />
         ))
       ) : (
-        <p>No books available</p> // Eğer film yoksa, mesaj göster
+        <p>No books available</p> // Eğer kitap yoksa, mesaj göster
       )}
     </div>
   );
