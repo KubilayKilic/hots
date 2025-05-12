@@ -19,7 +19,12 @@ const getServerData = async () => {
     ); // Hata varsa, kullanıcıya hata mesajı gösteriyoruz
   }
 
-  const games = data.map((item) => ({
+  // ⭐ Alfabetik olarak sırala (title'a göre)
+  const sortedData = data.sort((a, b) =>
+    a.title.localeCompare(b.title, "tr", { sensitivity: "base" })
+  );
+
+  const games = sortedData.map((item) => ({
     title: item.title,
     description: item.description,
     image_url: item.image_url,
@@ -31,8 +36,12 @@ const getServerData = async () => {
       {/* Arka plan sadece ilk ekran kadar sabit kalır */}
       <div className="background-layer" />
 
+      <div className="text-4xl justify-center flex mt-8">
+        Well-crafted worlds I was glad to visit.
+      </div>
+
       {/* Scroll edilecek içerik */}
-      <div className="relative z-10 flex justify-center p-8 gap-4 flex-wrap">
+      <div className="relative z-10 flex justify-center mt-3 gap-x-6 gap-y-6 flex-wrap p-20">
         {games.length > 0 ? (
           games.map((film, index) => (
             <Card
