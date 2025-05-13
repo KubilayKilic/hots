@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface CardProps {
   title: string;
@@ -14,11 +15,12 @@ const Card: React.FC<CardProps> = ({
   resonance,
 }) => {
   return (
-    <div className="relative w-[220px] h-[330px] rounded-lg shadow-lg overflow-hidden group">
-      <img
-        src={imageUrl}
+    <div className="relative w-full max-w-[220px] aspect-[2/3] rounded-lg shadow-lg overflow-hidden group">
+      <Image
+        src={imageUrl || "/default-image.jpg"} // fallback eklemek iyi olur
         alt={title}
-        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        fill
+        className="object-cover transition-transform duration-300 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 px-4">
         <h3 className="text-white text-xl font-bold mt-4">{title}</h3>
