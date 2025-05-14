@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase";
 import OyunlarPage from "@/componenets/sections/OyunlarPage";
 
+// Oyunları almak için fonksiyon
 const getGames = async () => {
   const { data, error } = await supabase
     .from("archive")
@@ -14,6 +15,9 @@ const getGames = async () => {
 };
 
 export default async function Page() {
+  // Oyunları alıyoruz
   const games = await getGames();
+
+  // Oyunları props olarak OyunlarPage bileşenine gönderiyoruz
   return <OyunlarPage games={games} />;
 }
