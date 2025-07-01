@@ -2,6 +2,7 @@ import FilmlerButon from "@/componenets/Butonlar/FilmlerButon";
 import KitaplarButon from "@/componenets/Butonlar/KitaplarButon";
 import DizilerButon from "@/componenets/Butonlar/DizilerButon";
 import OyunlarButon from "@/componenets/Butonlar/OyunlarButon";
+import MuziklerButon from "@/componenets/Butonlar/MüziklerButon";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <DizilerButon />
       <KitaplarButon />
       <OyunlarButon />
+      <MuziklerButon />
     </main>
   );
 }
