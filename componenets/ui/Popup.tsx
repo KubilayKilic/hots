@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-const stars = ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐"];
+const stars = ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"];
 
 interface ContentItem {
   title: string;
   description: string;
   image_url: string;
   resonance: number;
+  yorum: string;
 }
 
 const Popup = ({
@@ -72,7 +73,7 @@ const Popup = ({
         <div className="w-1/2 flex flex-col px-4 py-2 overflow-y-auto no-scrollbar">
           <div className="flex justify-center flex-grow">
             <p className="text-[19px] text-left ml-2 mt-2 max-w-prose mx-auto">
-              {item.description}
+              {item.yorum || "Henüz yorum girilmemiş."}
             </p>
           </div>
           <div className="text-yellow-400 text-[19px] flex justify-center mt-auto mb-2">

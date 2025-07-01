@@ -1,9 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: ["ucmeinpdbhgkaegikekw.supabase.co"],
+    domains: [
+      "ucmeinpdbhgkaegikekw.supabase.co",
+      "image.tmdb.org", // ✅ TMDb görselleri için eklendi
+    ],
   },
 };
 

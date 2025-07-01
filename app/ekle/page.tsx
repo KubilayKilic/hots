@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 
 type TMDBSonucu = {
   id: number;
@@ -8,6 +9,7 @@ type TMDBSonucu = {
   name?: string;
   poster_path?: string;
   overview?: string;
+  yorum?: string;
 };
 
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY!;
@@ -43,6 +45,30 @@ export default function EkleSayfasi() {
     return () => clearTimeout(delay);
   }, [arama, kategori]);
 
+  const handleKaydet = async () => {
+    if (!secili) return;
+
+    const { error } = await supabase.from("archive").insert([
+      {
+        title: secili.title || secili.name,
+        description: secili.overview,
+        image_url: `https://image.tmdb.org/t/p/w500${secili.poster_path}`,
+        resonance: puan,
+        category: kategori,
+        yorum: yorum,
+      },
+    ]);
+
+    if (error) {
+      alert("Kayıt başarısız: " + error.message);
+    } else {
+      alert("✅ İçerik başarıyla eklendi!");
+      setSecili(null);
+      setYorum("");
+      setPuan(0);
+    }
+  };
+
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-12">
       <div className="max-w-xl w-full bg-white p-8 rounded-xl shadow-lg">
@@ -59,7 +85,7 @@ export default function EkleSayfasi() {
           value={kategori}
           onChange={(e) => {
             setKategori(e.target.value);
-            setSecili(null); // kategori değişince seçiliyi sıfırla
+            setSecili(null);
           }}
         >
           <option value="film">🎬 Film</option>
@@ -69,7 +95,7 @@ export default function EkleSayfasi() {
           <option value="muzik">🎵 Müzik</option>
         </select>
 
-        {/* İçerik Ara + Uyarı */}
+        {/* İçerik Ara + Açıklama */}
         <div className="flex justify-between items-end mb-2">
           <label className="font-medium text-gray-700">İçerik Ara</label>
           <span className="text-sm text-rose-500">
@@ -116,7 +142,7 @@ export default function EkleSayfasi() {
         )}
       </div>
 
-      {/* Seçilen İçeriğin Detaylı Gösterimi */}
+      {/* Seçilen İçerik Detayı */}
       {secili && (
         <div className="mt-10 max-w-xl w-full bg-white p-6 rounded-xl shadow-xl">
           <div className="flex gap-6 items-start">
@@ -139,6 +165,7 @@ export default function EkleSayfasi() {
               </label>
               <textarea
                 className="w-full p-2 border rounded mb-4"
+                placeholder="Yorumunuzu yazın..."
                 rows={3}
                 value={yorum}
                 onChange={(e) => setYorum(e.target.value)}
@@ -165,7 +192,7 @@ export default function EkleSayfasi() {
               {/* Kaydet */}
               <button
                 className="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700"
-                onClick={() => alert("Henüz kayıt işlemi yapılmadı")}
+                onClick={handleKaydet}
               >
                 ✅ İçeriği Kaydet
               </button>

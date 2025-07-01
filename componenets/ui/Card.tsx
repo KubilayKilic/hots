@@ -7,13 +7,14 @@ interface CardProps {
   imageUrl?: string;
   resonance: number;
   onClick?: () => void; // 🔹 Burayı ekliyoruz
+  yorum: string;
 }
 
-const stars = ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐"];
+const stars = ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"];
 
 const Card: React.FC<CardProps> = ({
   title,
-  //description,
+  description,
   imageUrl,
   resonance,
   onClick,
@@ -32,9 +33,9 @@ const Card: React.FC<CardProps> = ({
       />
       <div className="absolute inset-0 bg-black bg-opacity-25 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 px-4">
         <h3 className="text-white text-3xl font-bold mt-4">{title}</h3>
-        {/* <div className="overflow-y-auto no-scrollbar text-sm text-white mt-2 mb-4 flex-1">
+        <div className="overflow-y-auto no-scrollbar text-sm text-white mt-2 mb-4 flex-1">
           <p>{description}</p>
-        </div> */}
+        </div>
         <div className="text-yellow-400 text-[19px] flex justify-between mt-auto mb-4">
           {stars[resonance - 1]}
         </div>
