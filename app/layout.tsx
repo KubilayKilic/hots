@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import EkleButon from "@/componenets/Butonlar/EkleButon";
+import AnaSayfaButon from "@/componenets/Butonlar/AnaSayfaButon";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +35,12 @@ export default function RootLayout({
         {/* Sabit background sadece ilk ekran kadar gözüksün */}
         <div className="background-layer" />
 
-        {/* Sayfa içeriği */}
-        <main className="relative z-10">{children}</main>
+        {/* Sayfa içeriği ve global butonlar */}
+        <main className="relative z-10">
+          {children}
+          <EkleButon />
+          <AnaSayfaButon />
+        </main>
       </body>
     </html>
   );
