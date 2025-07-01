@@ -15,10 +15,10 @@ const FilmlerButon: React.FC = () => {
   return (
     <button
       onClick={playSound}
-      className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+      className="relative inline-flex items-center justify-center p-0.5 mb-2 mt-2 me-2 overflow-hidden text-xl font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-rose-500 to-amber-400 group-hover:from-rose-500 group-hover:to-amber-400 hover:text-white dark:text-white"
     >
       <span className="relative px-8 py-4 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
-        Filmler
+        🎬 Film
       </span>
     </button>
   );
