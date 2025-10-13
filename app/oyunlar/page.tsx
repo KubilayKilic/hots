@@ -15,5 +15,5 @@ const getGames = async () => {
 
 export default async function Page() {
   const games = await getGames();
-  return <ContentGallery items={games} heading="İz bırakan oyunlar..." />;
+  return <ContentGallery items={games} heading="Sevdiğim oyunlar" />;
 }

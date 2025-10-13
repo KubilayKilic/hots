@@ -15,5 +15,5 @@ const getShows = async () => {
 
 export default async function Page() {
   const shows = await getShows();
-  return <ContentGallery items={shows} heading="İz bırakan diziler..." />;
+  return <ContentGallery items={shows} heading="Sevdiğim diziler" />;
 }

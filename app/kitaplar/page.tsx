@@ -15,5 +15,5 @@ const getBooks = async () => {
 
 export default async function Page() {
   const books = await getBooks();
-  return <ContentGallery items={books} heading="İz bırakan kitaplar..." />;
+  return <ContentGallery items={books} heading="Sevdiğim kitaplar" />;
 }

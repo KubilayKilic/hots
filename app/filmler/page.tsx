@@ -16,5 +16,5 @@ const getMovies = async () => {
 export default async function Page() {
   const movies = await getMovies();
 
-  return <ContentGallery items={movies} heading="İz bırakan filmler..." />;
+  return <ContentGallery items={movies} heading="Sevdiğim filmler" />;
 }

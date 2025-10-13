@@ -15,7 +15,5 @@ const getBooks = async () => {
 
 export default async function Page() {
   const music = await getBooks();
-  return (
-    <ContentGallery items={music} heading="İz bırakan müzikler&şarkılar..." />
-  );
+  return <ContentGallery items={music} heading="İSevdiğim müzikler" />;
 }

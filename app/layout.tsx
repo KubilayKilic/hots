@@ -38,7 +38,6 @@ export default function RootLayout({
         {/* Sayfa içeriği ve global butonlar */}
         <main className="relative z-10">
           {children}
-          <EkleButon />
           <AnaSayfaButon />
         </main>
       </body>
