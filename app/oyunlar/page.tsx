@@ -1,19 +1,10 @@
-import { supabase } from "@/lib/supabase";
+import gamesData from "@/data/games.json";
 import ContentGallery from "@/componenets/sections/ContentGallery";
 
-const getGames = async () => {
-  const { data, error } = await supabase
-    .from("archive")
-    .select("*")
-    .eq("category", "oyun");
-
-  if (error || !data) return [];
-  return data.sort((a, b) =>
+export default function Page() {
+  const games = gamesData.sort((a, b) =>
     a.title.localeCompare(b.title, "tr", { sensitivity: "base" })
   );
-};
 
-export default async function Page() {
-  const games = await getGames();
   return <ContentGallery items={games} heading="Sevdiğim oyunlar" />;
 }

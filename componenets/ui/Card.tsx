@@ -4,10 +4,10 @@ import Image from "next/image";
 interface CardProps {
   title: string;
   description: string;
-  imageUrl?: string;
+  image_url?: string;
   resonance: number;
-  onClick?: () => void; // 🔹 Burayı ekliyoruz
   yorum: string;
+  onClick?: () => void;
 }
 
 const stars = ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"];
@@ -15,17 +15,29 @@ const stars = ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"];
 const Card: React.FC<CardProps> = ({
   title,
   description,
-  imageUrl,
+  image_url,
   resonance,
   onClick,
 }) => {
   return (
     <div
-      onClick={onClick} // 🔹 onClick event'i burada kullanılıyor
-      className="relative w-full max-w-[220px] aspect-[2/3] rounded-lg shadow-lg overflow-hidden group cursor-pointer"
+      onClick={onClick}
+      className="
+    relative 
+    w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px] 
+    aspect-[2/3]
+    rounded-xl 
+    shadow-lg 
+    overflow-hidden 
+    group 
+    cursor-pointer 
+    transition-transform 
+    duration-300 
+    hover:scale-105
+  "
     >
       <Image
-        src={imageUrl || "/default-image.jpg"}
+        src={image_url || "/default-image.jpg"}
         alt={title}
         fill
         className="object-cover transition-transform duration-300 group-hover:scale-105"

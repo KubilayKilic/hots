@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Bloodborne",
+    "description": "One of the best souls games ever made.",
+    "image_url": "/images/oyunlar/games_bloodborne.jpg",
+    "resonance": 5,
+    "yorum": "Yerimmmmmmm",
+    "category": "oyun"
+  },
+  {
+    "title": "Bioshock",
+    "description": "Rapture is amazing.",
+    "image_url": "/images/oyunlar/games_assassins-creed-black-flag.jpg",
+    "resonance": 4,
+    "yorum": "mis gibi",
+    "category": "oyun"
+  }
+]

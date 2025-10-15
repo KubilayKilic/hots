@@ -1,4 +1,3 @@
-import { supabase } from "@/lib/supabase";
 import ContentGallery from "@/componenets/sections/ContentGallery";
 
 const getBooks = async () => {
@@ -15,5 +14,5 @@ const getBooks = async () => {
 
 export default async function Page() {
   const music = await getBooks();
-  return <ContentGallery items={music} heading="İSevdiğim müzikler" />;
+  return <ContentGallery items={music} heading="Sevdiğim müzikler" />;
 }

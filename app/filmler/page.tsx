@@ -1,4 +1,3 @@
-import { supabase } from "@/lib/supabase";
 import ContentGallery from "@/componenets/sections/ContentGallery";
 
 const getMovies = async () => {

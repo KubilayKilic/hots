@@ -9,6 +9,7 @@ interface ContentItem {
   description: string;
   image_url: string;
   resonance: number;
+  yorum: string;
 }
 
 interface ContentGalleryProps {
@@ -35,14 +36,15 @@ const ContentGallery: React.FC<ContentGalleryProps> = ({ items, heading }) => {
         </div>
       )}
 
-      <div className="relative z-10 flex justify-center mt-3 gap-x-6 gap-y-6 flex-wrap p-20">
+      <div className="relative z-10 flex justify-center mt-3 gap-6 flex-wrap px-6 sm:px-12 md:px-20">
         {items.map((item, index) => (
           <Card
             key={index}
             title={item.title}
             description={item.description}
-            imageUrl={item.image_url}
+            image_url={item.image_url}
             resonance={item.resonance}
+            yorum={item.yorum} // 🔹 bunu ekle
             onClick={() => setSelectedIndex(index)}
           />
         ))}
